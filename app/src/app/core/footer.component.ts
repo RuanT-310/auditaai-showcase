@@ -5,6 +5,7 @@ import { Partner } from "../types";
     selector: 'app-footer',
     standalone: true,
     template: `
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <section class="border-t pt-10 border-gray-200 pb-16">
         <h2 class="text-3xl font-bold text-indigo-900 mb-8 text-center">
           Desenvolvimento e Apoio Institucional
@@ -31,7 +32,8 @@ import { Partner } from "../types";
             }
           </div>
         </div>
-    </section>`,
+    </section>
+    </div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
