@@ -1,23 +1,23 @@
-// --- Interfaces de Dados ---
-interface Award {
+// --- export Interfaces de Dados ---
+export interface Award {
   title: string;
   event: string;
   color: string;
 }
 
-interface Feature {
+export interface Feature {
   title: string;
   description: string;
   iconPath: string;
   iconColor: string;
 }
 
-interface Step {
+export interface Step {
   title: string;
   description: string;
 }
 
-interface Partner {
+export interface Partner {
   name: string;
   description: string;
 }

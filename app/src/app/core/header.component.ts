@@ -1,0 +1,48 @@
+// ----------------------------------------------------------------------
+// 1. Componente: HeroSectionComponent
+// ----------------------------------------------------------------------
+
+import { ChangeDetectionStrategy, Component, input, InputSignal } from "@angular/core";
+import { Award } from "../types";
+
+/**
+ * Componente para o cabeçalho e a seção de prêmios (Hero Section).
+ */
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  template: `
+    <header class="bg-indigo-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Título e Subtítulo -->
+        <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-2">
+          Audit.<span class="text-yellow-400">AI</span>
+        </h1>
+        <p class="text-indigo-200 text-xl sm:text-2xl font-light mb-8">
+          Inteligência Artificial no Combate à Corrupção em Instituições Federais de Ensino.
+        </p>
+
+        <!-- Seção de Prêmios (Destaque) -->
+        <div class="flex flex-wrap gap-4 sm:gap-6 mt-6">
+          @for (award of awards(); track award.event) {
+            <div class="flex items-center space-x-2 p-3 rounded-lg shadow-lg {{ award.color }} text-indigo-900 transition duration-300 hover:scale-[1.02]">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M10 12a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1z" clip-rule="evenodd" />
+                <path d="M10 2a8 8 0 00-7.85 6.25c.34.08.67-.03.88-.31l1.5-2.25a.75.75 0 011.24 0l1.5 2.25c.21.28.54.39.88.31A8 8 0 0010 2z" />
+              </svg>
+              <span class="font-bold text-lg leading-none">{{ award.title }}</span>
+              <span class="text-sm font-medium opacity-80">| {{ award.event }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HeaderComponent {
+  // Recebe a lista de prêmios como InputSignal
+  awards: InputSignal<Award[]> = input.required<Award[]>();
+}
