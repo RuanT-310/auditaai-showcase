@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+@theme {
+
+    /* 
+    -g cor do governo
+    -d cor escura (cor padrão e a clara sem nenhum prefixo)
+    -alt cor alternativa
+    -bg cor de container
+    -r cor de leitura
+    -int cor de interação
+    -(alert, info, error, sucess) cores de aviso
+    */
+    /*  As cores de superfície são utilizadas como base cromática neutra para composição do tema e compõem harmonicamente com as demais cores. São usadas especificamente em planos de fundo nas telas da interface e superfícies de componentes. Também devem proporcionar contraste com o texto e elementos interativos, assim como qualquer outro elemento de comunicação visual na interface, como imagens, ilustrações, ícones, etc.
+    */
+    --color-g-bg: #ffffff;
+    --color-g-bg-alt: #f8f8f8;
+
+    --color-g-bg-d: #071D41;
+    --color-g-bg-d-alt: #0C326F;
+
+    /*  São as cores usadas nos elementos que necessitam de legibilidade, como textos e ícones, por exemplo. A função principal dessas cores é proporcionar contraste com a Cor Superfície usada na tela ou elementos. Logo, para toda Cor Superfície, existe uma Cor Leitura contrastante.*/
+    --color-g-r-bg: #333333;
+    --color-g-r-bg-d: #ffffff;
+
+    /* Função Interação
+        São cores que servem para indicar ao usuário a possibilidade de interação sobre qualquer elemento que a utiliza. É necessário que estas cores se destaquem sobre os outros elementos ou informações textuais na interface.
+    */
+    --color-g-int: #1351B4;
+    --color-g-int-d: #C5D4EB;
+
+    /*  As cores de avisos foram escolhidas para serem aplicadas em situações que exijam mais atenção do usuário, como ocorre nas mensagens de Feedback e estados correlacionados.*/
+
+    /* Aviso info */
+    --color-g-info: #155BCB;
+    --color-g-info-alt: #D4E5FF;
+    /* Aviso sucesso */
+    --color-g-success: #168821;
+    --color-g-success-alt: #E3F5E1;
+    /* Aviso alerta */
+    --color-g-alert: #FFCD07;
+    --color-g-alert-alt: #FFF5C2;
+    /* Aviso erro */
+    --color-g-error: #E52207;
+    --color-g-error-alt: #FDE0DB;
+}
