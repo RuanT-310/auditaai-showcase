@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Award } from '../../types';
 
 @Component({
@@ -9,5 +9,5 @@ import { Award } from '../../types';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  awards!: Award[];
+  @Input('awards') awards!: Award[];
 }
