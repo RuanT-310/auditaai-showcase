@@ -1,64 +1,35 @@
 import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
-import { ContentComponent, CtaFooterComponent, FooterComponent, HeaderComponent} from "./core"
 import { Award, Feature, Partner, Step } from "./types";
+import { CtaComponent } from "./components/cta/cta.component";
+import { ContentComponent } from "./components/content/content.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
-/**
- * @title Audit.AI Showcase Page
- * @description Componente principal para a página de apresentação do projeto Audit.AI.
- * Serve como container, gerenciando os dados e chamando os sub-componentes.
- */
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     HeaderComponent, 
     ContentComponent, 
-    CtaFooterComponent,
+    CtaComponent,
     FooterComponent
   ],
-  template: `
-    <!-- Configuração da fonte Inter e fundo principal -->
-    <div class="min-h-screen bg-gray-50 font-['Inter',_sans-serif]">
-      
-      <!-- Seção de Cabeçalho e Prêmios -->
-      <app-header [awards]="awards()"></app-header>
-      
-      <!-- Seções de Conteúdo (Contexto, Fluxo e Recursos) -->
-      <app-content-sections 
-        [workflowSteps]="workflowSteps()" 
-        [features]="features()">
-      </app-content-sections>
-      
-      <!-- CTA e Rodapé -->
-      <app-cta-footer 
-        [email]="email()">
-      </app-cta-footer>
-
-      <!-- Seção de Parceiros e Contribuidores -->
-      <app-footer
-        [partners]="partners()"
-        [contributors]="contributors()">
-      </app-footer>
-    </div>
-  `,
-  styles: [`
-    /* Estilo para garantir que a página use a fonte Inter */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-  `],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   /** Endereço de e-mail para contato (CTA) */
-  email = signal<string>('ruan.rolim.137@gmail.com');
+  email = 'ruan.rolim.137@gmail.com';
 
   /** Lista de prêmios conquistados */
-  awards = signal<Award[]>([
+  awards: Award[] = [
     { title: '1º Lugar', event: 'Prêmio INAC 2025', color: 'bg-yellow-400' },
     { title: '3º Lugar', event: 'Prêmio SBSI 2025', color: 'bg-blue-400' },
-  ]);
+  ];
 
   /** Lista de recursos/benefícios para a seção de funcionalidades */
-  features = signal<Feature[]>([
+  features: Feature[] = [
     { 
       title: 'Sumarização Estruturada', 
       description: 'GML sintetiza PADs complexos em resumos organizados, focando nos elementos-chave do processo.', 
@@ -77,28 +48,28 @@ export class AppComponent {
       iconPath: 'M4 6h16M4 12h16m-7 6h7', // Ícone de lista/padrão
       iconColor: 'text-red-500'
     },
-  ]);
+  ];
 
   /** Passos simplificados do fluxo de trabalho */
-  workflowSteps = signal<Step[]>([
+  workflowSteps: Step[] =[
     { title: 'Extração e Segmentação', description: 'O texto do PAD é extraído e dividido em partes menores (chunks) de forma otimizada.' },
     { title: 'Vetorização', description: 'Os segmentos são convertidos em representações matemáticas (embeddings) para análise semântica.' },
     { title: 'Busca Inteligente', description: 'Consultas são feitas nos vetores para encontrar rapidamente trechos juridicamente relevantes.' },
     { title: 'Sumarização GML', description: 'Um Grande Modelo de Linguagem organiza e estrutura o relatório final de auditoria.' },
-  ]);
+  ];
 
   /** Parceiros e Instituições */
-  partners = signal<Partner[]>([
+  partners: Partner[] = [
     { name: 'ManivaLab', description: 'Grupo de Pesquisa em Transformação Digital na Amazônia Sul Oriental - Unifesspa' },
     { name: 'PPG em Ciências Forenses', description: 'Programa de Pós-Graduação - Universidade Federal do Sul e Sudeste do Pará (Unifesspa)' },
-  ]);
+  ];
 
   /** Lista de Contribuidores */
-  contributors = signal<string[]>([
+  contributors: string[] = [
     '@RuanT-310 (Ruan Rolim)', 
     '@marcelaalves89 (Marcela Souza)', 
     '@hkuribayashi (Hugo Kuribayashi)', 
     '@octo-lu (Pedro Bacelar)', 
     'Giselle Batista'
-  ]);
+  ];
 }

@@ -1,0 +1,23 @@
+<div class="min-h-screen bg-gray-50 font-['Inter',_sans-serif]">
+      
+    <app-header [awards]="awards"></app-header>
+    
+    <!-- Seções de Conteúdo (Contexto, Fluxo e Recursos) -->
+    <app-content
+        [workflowSteps]="workflowSteps" 
+        [features]="features"
+    >
+    </app-content>
+    
+    <!-- CTA e Rodapé -->
+    <app-cta
+        [email]="email"
+    >
+    </app-cta>
+
+    <!-- Seção de Parceiros e Contribuidores -->
+    <app-footer
+    [partners]="partners"
+    [contributors]="contributors">
+    </app-footer>
+</div>

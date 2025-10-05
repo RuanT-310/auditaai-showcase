@@ -1,18 +1,4 @@
-// ----------------------------------------------------------------------
-// 1. Componente: HeroSectionComponent
-// ----------------------------------------------------------------------
-
-import { ChangeDetectionStrategy, Component, input, InputSignal } from "@angular/core";
-import { Award } from "../types";
-
-/**
- * Componente para o cabeçalho e a seção de prêmios (Hero Section).
- */
-@Component({
-  selector: 'app-header',
-  standalone: true,
-  template: `
-    <header class="bg-g-bg-d text-g-r-bg-d py-8 px-4 sm:px-6 lg:px-8">
+<header class="bg-g-bg-d text-g-r-bg-d py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
         
         <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-2">
@@ -24,7 +10,7 @@ import { Award } from "../types";
         </p>
 
         <div class="flex flex-wrap gap-4 sm:gap-6 mt-6">
-            @for (award of awards(); track award.event) {
+            @for (award of awards; track award.event) {
                 <div class="flex items-center space-x-2 p-3 rounded-lg shadow-lg {{ award.color }} text-g-r-bg transition duration-300 hover:scale-[1.02]">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2z" clip-rule="evenodd" />
@@ -38,10 +24,3 @@ import { Award } from "../types";
         </div>
     </div>
 </header>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class HeaderComponent {
-  // Recebe a lista de prêmios como InputSignal
-  awards: InputSignal<Award[]> = input.required<Award[]>();
-}
